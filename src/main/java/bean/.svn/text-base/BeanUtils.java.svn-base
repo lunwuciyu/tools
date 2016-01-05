@@ -1,4 +1,4 @@
-package bean;
+package ga.cr.tool.bean;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -11,6 +11,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.util.Assert;
 import org.springframework.util.ReflectionUtils;
 
+/**
+ * 扩展Apache Commons BeanUtils, 提供一些反射方面缺失功能的封装.
+ */
 public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
 
 	protected static final Log logger = LogFactory.getLog(BeanUtils.class);
@@ -18,31 +21,42 @@ public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
 	private BeanUtils() {
 	}
 
-	public static Field getDeclaredField(Object object, String propertyName)
-			throws NoSuchFieldException {
+	/**
+	 * 循环向上转型,获取对象的DeclaredField.
+	 *
+	 * @throws NoSuchFieldException 如果没有该Field时抛出.
+	 */
+	public static Field getDeclaredField(Object object, String propertyName) throws NoSuchFieldException {
 		Assert.notNull(object);
 		Assert.hasText(propertyName);
 		return getDeclaredField(object.getClass(), propertyName);
 	}
 
+	/**
+	 * 循环向上转型,获取对象的DeclaredField.
+	 *
+	 * @throws NoSuchFieldException 如果没有该Field时抛出.
+	 */
 	@SuppressWarnings("rawtypes")
-	public static Field getDeclaredField(Class clazz, String propertyName)
-			throws NoSuchFieldException {
+	public static Field getDeclaredField(Class clazz, String propertyName) throws NoSuchFieldException {
 		Assert.notNull(clazz);
 		Assert.hasText(propertyName);
-		for (Class superClass = clazz; superClass != Object.class; superClass = superClass
-				.getSuperclass()) {
+		for (Class superClass = clazz; superClass != Object.class; superClass = superClass.getSuperclass()) {
 			try {
 				return superClass.getDeclaredField(propertyName);
 			} catch (NoSuchFieldException e) {
+				// Field不在当前类定义,继续向上转型
 			}
 		}
-		throw new NoSuchFieldException("No such field: " + clazz.getName()
-				+ '.' + propertyName);
+		throw new NoSuchFieldException("No such field: " + clazz.getName() + '.' + propertyName);
 	}
 
-	public static Object forceGetProperty(Object object, String propertyName)
-			throws NoSuchFieldException {
+	/**
+	 * 暴力获取对象变量值,忽略private,protected修饰符的限制.
+	 *
+	 * @throws NoSuchFieldException 如果没有该Field时抛出.
+	 */
+	public static Object forceGetProperty(Object object, String propertyName) throws NoSuchFieldException {
 		Assert.notNull(object);
 		Assert.hasText(propertyName);
 
@@ -61,8 +75,13 @@ public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
 		return result;
 	}
 
-	public static void forceSetProperty(Object object, String propertyName,
-			Object newValue) throws NoSuchFieldException {
+	/**
+	 * 暴力设置对象变量值,忽略private,protected修饰符的限制.
+	 *
+	 * @throws NoSuchFieldException 如果没有该Field时抛出.
+	 */
+	public static void forceSetProperty(Object object, String propertyName, Object newValue)
+			throws NoSuchFieldException {
 		Assert.notNull(object);
 		Assert.hasText(propertyName);
 
@@ -77,9 +96,14 @@ public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
 		field.setAccessible(accessible);
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static Object invokePrivateMethod(Object object, String methodName,
-			Object... params) throws NoSuchMethodException {
+	/**
+	 * 暴力调用对象函数,忽略private,protected修饰符的限制.
+	 *
+	 * @throws NoSuchMethodException 如果没有该Method时抛出.
+	 */
+	@SuppressWarnings({"rawtypes", "unchecked"})
+	public static Object invokePrivateMethod(Object object, String methodName, Object... params)
+			throws NoSuchMethodException {
 		Assert.notNull(object);
 		Assert.hasText(methodName);
 		Class[] types = new Class[params.length];
@@ -89,19 +113,17 @@ public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
 
 		Class clazz = object.getClass();
 		Method method = null;
-		for (Class superClass = clazz; superClass != Object.class; superClass = superClass
-				.getSuperclass()) {
+		for (Class superClass = clazz; superClass != Object.class; superClass = superClass.getSuperclass()) {
 			try {
 				method = superClass.getDeclaredMethod(methodName, types);
 				break;
 			} catch (NoSuchMethodException e) {
-				// 鏂规硶涓嶅湪褰撳墠绫诲畾涔�缁х画鍚戜笂杞瀷
+				// 方法不在当前类定义,继续向上转型
 			}
 		}
 
 		if (method == null)
-			throw new NoSuchMethodException("No Such Method:"
-					+ clazz.getSimpleName() + methodName);
+			throw new NoSuchMethodException("No Such Method:" + clazz.getSimpleName() + methodName);
 
 		boolean accessible = method.isAccessible();
 		method.setAccessible(true);
@@ -115,6 +137,9 @@ public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
 		return result;
 	}
 
+	/**
+	 * 按Filed的类型取得Field列表.
+	 */
 	@SuppressWarnings("rawtypes")
 	public static List<Field> getFieldsByType(Object object, Class type) {
 		List<Field> list = new ArrayList<Field>();
@@ -127,12 +152,17 @@ public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
 		return list;
 	}
 
+	/**
+	 * 按FiledName获得Field的类型.
+	 */
 	@SuppressWarnings("rawtypes")
-	public static Class getPropertyType(Class type, String name)
-			throws NoSuchFieldException {
+	public static Class getPropertyType(Class type, String name) throws NoSuchFieldException {
 		return getDeclaredField(type, name).getType();
 	}
 
+	/**
+	 * 获得field的getter函数名称.
+	 */
 	@SuppressWarnings("rawtypes")
 	public static String getGetterName(Class type, String fieldName) {
 		Assert.notNull(type, "Type required");
@@ -145,7 +175,10 @@ public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
 		}
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	/**
+	 * 获得field的getter函数,如果找不到该方法,返回null.
+	 */
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static Method getGetterMethod(Class type, String fieldName) {
 		try {
 			return type.getMethod(getGetterName(type, fieldName));

@@ -1,0 +1,135 @@
+package ga.cr.tool.ftp;
+
+import java.io.IOException;
+
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPReply;
+import org.apache.log4j.Logger;
+
+/**
+ * FTP工具类
+ * <p></p>
+ * @author 吴冰  2015-12-14 下午4:18:26
+ * @version V1.0   
+ * @modificationHistory=========================逻辑或功能性重大变更记录
+ * @modify by user: {修改人} 2015-12-14
+ * @modify by reason:{方法名}:{原因}
+ */
+public class FtpUtil {
+
+	private static final Logger logger = Logger.getLogger(FtpUtil.class);
+	private static FtpUtil instance;
+	private FTPClient ftpClient = null;
+
+	/**
+	 * 
+	 * <p>获取工具类实例</p>
+	 * @author 吴冰
+	 * @date 2015-12-14 下午4:18:46
+	 * @return FtpUtil
+	 * @throws
+	 * @version v1.0
+	 */
+	public synchronized static FtpUtil getInstance() {
+		if (instance == null) {
+			instance = new FtpUtil();
+		}
+		return instance;
+	}
+
+	/**
+	 * 
+	 * <p>登录FTP服务器</p>
+	 * @author 吴冰
+	 * @date 2015-12-14 下午4:19:11
+	 * @param url :　FTP服务器地址，eg:127.0.0.1
+	 * @param username : FTP用户名
+	 * @param pwd : FTP密码
+	 * @throws
+	 * @version v1.0
+	 */
+	public void login(String url, String username, String pwd) {
+		ftpClient = new FTPClient();
+		try {
+			// 连接
+			ftpClient.connect(url);
+			ftpClient.login(username, pwd);
+			int reply = ftpClient.getReplyCode();
+			if (!FTPReply.isPositiveCompletion(reply)) {
+				this.close();
+				logger.error("FTP server refused connection.");
+			}
+		} catch (Exception e) {
+			logger.error("login FTP server error:", e);
+			this.close();
+		}
+	}
+	
+	/**
+	 * 
+	 * <p>删除FTP上的服务</p>
+	 * @author 吴冰
+	 * @date 2015-12-14 下午4:33:05
+	 * @param fileName : 删除的文件名，包含相对路径，eg:/test/test.txt
+	 * @return boolean : 是否删除成功
+	 * @throws
+	 * @version v1.0
+	 */
+	public boolean deleteFile(String fileName){
+		boolean flag = false;
+		if (ftpClient != null) {
+			try {
+				flag = ftpClient.deleteFile(fileName);
+			} catch (IOException e) {
+				logger.error(e.getMessage(), e);
+				this.close();
+			}
+		}
+		return flag;
+	}
+
+	/**
+	 * 
+	 * <p>删除FTP上的服务</p>
+	 * @author 吴冰
+	 * @date 2015-12-14 下午4:19:41
+	 * @param url :　FTP服务器地址，eg:127.0.0.1
+	 * @param username : FTP用户名
+	 * @param pwd : FTP密码
+	 * @param fileName : 删除的文件名，包含相对路径，eg:/test/test.txt
+	 * @return boolean : 是否删除成功
+	 * @throws
+	 * @version v1.0
+	 */
+	public boolean deleteFile(String url, String userName, String pwd, String fileName) {
+		login(url, userName, pwd);
+		return deleteFile(fileName);
+	}
+
+	/**
+	 * 
+	 * <p>释放FTP连接</p>
+	 * @author 吴冰
+	 * @date 2015-12-14 下午4:21:00 void
+	 * @throws
+	 * @version v1.0
+	 */
+	public void close() {
+		if (ftpClient != null) {
+			if (ftpClient.isConnected()) {
+				try {
+					ftpClient.logout();
+					ftpClient.disconnect();
+				} catch (IOException e) {
+					logger.error(e.getMessage(), e);
+				}
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("start delete file");
+		getInstance().deleteFile("100.10.3.41", "test", "12345", "/test/test.txt");
+		System.out.println("delete file complete");
+	}
+}

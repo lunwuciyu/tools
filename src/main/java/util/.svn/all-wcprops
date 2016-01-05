@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1423/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util
+END
+JdbcFieldTag.java
+K 25
+svn:wc:ra_dav:version-url
+V 215
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1423/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/JdbcFieldTag.java
+END
+RecordInspectUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 220
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/RecordInspectUtil.java
+END
+QueryUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/QueryUtil.java
+END
+SortInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/SortInfo.java
+END
+SortMapping.java
+K 25
+svn:wc:ra_dav:version-url
+V 214
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/SortMapping.java
+END
+JsonCameraInfoNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 221
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/JsonCameraInfoNode.java
+END
+Verify.java
+K 25
+svn:wc:ra_dav:version-url
+V 209
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/Verify.java
+END
+AppContext.java
+K 25
+svn:wc:ra_dav:version-url
+V 213
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/AppContext.java
+END
+Module.java
+K 25
+svn:wc:ra_dav:version-url
+V 209
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/Module.java
+END
+TreeNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/TreeNode.java
+END
+MethodPrivilege.java
+K 25
+svn:wc:ra_dav:version-url
+V 218
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/MethodPrivilege.java
+END
+SearchCriteria.java
+K 25
+svn:wc:ra_dav:version-url
+V 217
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/SearchCriteria.java
+END
+BeanListComparator.java
+K 25
+svn:wc:ra_dav:version-url
+V 221
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/BeanListComparator.java
+END
+CollectionUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 217
+/svn/%E5%85%AC%E5%AE%89%E9%83%A8%E5%87%BA%E5%85%A5%E5%A2%83%E9%A1%B9%E7%9B%AE/!svn/ver/1278/code20151211/%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/jk/tool/src/main/java/ga/cr/tool/util/CollectionUtil.java
+END
