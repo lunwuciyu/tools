@@ -6,21 +6,14 @@ import java.util.Iterator;
 import java.util.StringTokenizer;
 
 /**
- * Collection工具类
- * 
- * 
+ * allIn - 判断一个集合中的所有元素是否都在另一个集合中
+ * substract - 把在集合source中而不在集合target中的元素集合提取出来
+ * in - 把在集合source中也在集合target中的元素集合提取出来
+ * allNotIn - 判断一个集合中的所有元素是否都不在另一个集合中
+ * ipMiddle - 根据起始IP地址和结束IP地址得到位于起始IP地址和结束IP地址之间的IP地址集合
  */
 public abstract class CollectionUtil {
 
-	/**
-	 * 判断一个集合中的所有元素是否都在另一个集合中
-	 * 
-	 * @param source
-	 *            源
-	 * @param target
-	 *            目标
-	 * @return
-	 */
 	@SuppressWarnings("rawtypes")
 	public static boolean allIn(Collection source, Collection target) {
 		if (target == null || target.size() == 0) {
@@ -36,15 +29,6 @@ public abstract class CollectionUtil {
 		return true;
 	}
 
-	/**
-	 * 把在集合source中而不在集合target中的元素集合提取出来
-	 * 
-	 * @param source
-	 *            源
-	 * @param target
-	 *            目标
-	 * @return
-	 */
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static Collection substract(Collection source, Collection target) {
 		if (source == null || source.size() == 0) {
@@ -63,15 +47,6 @@ public abstract class CollectionUtil {
 		return result;
 	}
 
-	/**
-	 * 把在集合source中也在集合target中的元素集合提取出来
-	 * 
-	 * @param source
-	 *            源
-	 * @param target
-	 *            目标
-	 * @return
-	 */
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static Collection in(Collection source, Collection target) {
 		if (source == null || source.size() == 0) {
@@ -90,15 +65,6 @@ public abstract class CollectionUtil {
 		return result;
 	}
 
-	/**
-	 * 判断一个集合中的所有元素是否都不在另一个集合中
-	 * 
-	 * @param source
-	 *            源
-	 * @param target
-	 *            目标
-	 * @return
-	 */
 	@SuppressWarnings("rawtypes")
 	public static boolean allNotIn(Collection source, Collection target) {
 		if (target == null || target.size() == 0) {
@@ -113,13 +79,6 @@ public abstract class CollectionUtil {
 		return true;
 	}
 
-	/**
-	 * 根据起始IP地址和结束IP地址得到位于起始IP地址和结束IP地址之间的IP地址集合
-	 * 
-	 * @param startIp
-	 * @param endIp
-	 * @return
-	 */
 	public static Collection<String> ipMiddle(String startIp, String endIp) {
 		// 解析起始IP地址
 		String[] startIpArray = new String[4];
